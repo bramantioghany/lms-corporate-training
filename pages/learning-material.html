@@ -1,0 +1,266 @@
+<!--
+    Halaman 3: Learning Material
+    Menampilkan daftar materi, konten pembelajaran,
+    dan progres penyelesaian modul pengguna.
+-->
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Mengatur encoding karakter halaman -->
+    <meta charset="UTF-8">
+
+    <!-- Mengatur tampilan agar responsif pada berbagai ukuran layar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul halaman pada tab browser -->
+    <title>Learning Material | SkillHub</title>
+
+    <!-- Memuat CSS hasil kompilasi Tailwind CSS -->
+    <link rel="stylesheet" href="../css/output.css">
+
+    <!-- Memuat CSS tambahan aplikasi SkillHub -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <!--
+        KONTAINER UTAMA
+        Membungkus sidebar dan konten materi pembelajaran.
+        Pada layar medium ke atas, elemen menggunakan tata letak Flexbox.
+    -->
+    <div class="min-h-screen md:flex">
+
+        <!--
+            SIDEBAR NAVIGASI
+            Struktur sidebar disamakan dengan dashboard.html
+            agar navigasi tetap konsisten pada setiap halaman.
+        -->
+        <aside id="sidebar"
+            class="hidden w-64 shrink-0 bg-brand-900 p-6 text-white md:block">
+
+            <!-- Logo SkillHub yang mengarah ke halaman utama -->
+            <a href="../index.html" class="text-2xl font-extrabold">
+                SkillHub
+            </a>
+
+            <!--
+                MENU NAVIGASI
+                Berisi Dashboard, My Courses, Assignments,
+                Progress, dan Profile.
+            -->
+            <nav aria-label="Navigasi dashboard" class="mt-10 space-y-2">
+
+                <!-- Menu untuk kembali ke halaman dashboard -->
+                <a href="dashboard.html"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Dashboard
+                </a>
+
+                <!--
+                    MENU MY COURSES
+                    Menandakan halaman materi pembelajaran sebagai
+                    halaman aktif menggunakan aria-current="page".
+                -->
+                <a href="learning-material.html"
+                    aria-current="page"
+                    class="block rounded-lg bg-white/15 px-4 py-3">
+                    My Courses
+                </a>
+
+                <!-- Menu untuk menuju daftar tugas pada dashboard -->
+                <a href="dashboard.html#assignments"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Assignments
+                </a>
+
+                <!-- Menu untuk menuju progres pembelajaran pada dashboard -->
+                <a href="dashboard.html#progress"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Progress
+                </a>
+
+                <!--
+                    MENU PROFILE
+                    Mengarahkan pengguna ke bagian profil pada dashboard.
+                    Profil tetap tersedia meskipun pengguna membuka My Courses.
+                -->
+                <a href="dashboard.html#profile"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Profile
+                </a>
+            </nav>
+
+            <!--
+                MENU LOG OUT
+                Diletakkan di luar elemen nav, sama seperti dashboard.html.
+                Margin atas memberikan jarak dari menu navigasi.
+                Tautan saat ini mengarah ke halaman utama aplikasi.
+            -->
+            <a href="../index.html"
+                class="mt-12 block text-sm text-slate-300">
+                Log Out
+            </a>
+        </aside>
+
+        <!--
+            KONTEN UTAMA
+            Berisi informasi modul, progres modul,
+            daftar materi, dan konten pembelajaran aktif.
+        -->
+        <main class="min-w-0 flex-1 p-5 md:p-8">
+
+            <!--
+                HEADER HALAMAN
+                Menampilkan jalur navigasi materi dan judul materi aktif.
+                Tombol Menu ditampilkan pada perangkat dengan layar kecil.
+            -->
+            <header class="mb-6 flex items-center justify-between gap-4">
+
+                <!-- Informasi lokasi halaman dan judul materi -->
+                <div>
+
+                    <!-- Breadcrumb atau jalur lokasi materi -->
+                    <p class="text-sm text-slate-500">
+                        My Courses / Digital Marketing Basics / Module 2
+                    </p>
+
+                    <!-- Judul materi yang sedang dibuka -->
+                    <h1 class="mt-2 text-2xl md:text-3xl">
+                        Social Media Marketing
+                    </h1>
+                </div>
+
+                <!--
+                    TOMBOL MENU RESPONSIF
+                    Mengontrol sidebar pada layar kecil.
+                    Pengaturan buka/tutup perlu ditangani oleh JavaScript.
+                -->
+                <button id="menu-toggle"
+                    class="rounded-lg border px-3 py-2 md:hidden"
+                    aria-controls="sidebar"
+                    aria-expanded="false">
+                    Menu
+                </button>
+            </header>
+
+            <!--
+                RINGKASAN MODUL
+                Menampilkan nama modul, deskripsi, dan jumlah materi
+                yang sudah diselesaikan oleh pengguna.
+            -->
+            <section class="card mb-6">
+
+                <!-- Judul modul dan label progres disusun berdampingan -->
+                <div class="flex items-center justify-between gap-4">
+
+                    <!-- Informasi utama modul pembelajaran -->
+                    <div>
+
+                        <!-- Nama dan nomor modul -->
+                        <h2 class="text-lg">
+                            Module 2: Social Media Marketing
+                        </h2>
+
+                        <!-- Deskripsi singkat tujuan pembelajaran -->
+                        <p class="mt-2 text-sm text-slate-500">
+                            Pelajari strategi pemasaran melalui media sosial.
+                        </p>
+                    </div>
+
+                    <!--
+                        LABEL PROGRES MODUL
+                        Menampilkan jumlah materi yang sudah selesai.
+                        Nilai dapat diperbarui melalui learning-material.js.
+                    -->
+                    <span id="module-progress-label"
+                        class="shrink-0 text-sm font-semibold text-brand-600">
+                        2/5 selesai
+                    </span>
+                </div>
+
+                <!--
+                    PROGRESS BAR MODUL
+                    Menunjukkan persentase penyelesaian materi.
+                    Lebar awal 40% sesuai dengan 2 dari 5 materi selesai.
+                -->
+                <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-100">
+
+                    <!-- Bagian indikator progres modul -->
+                    <div id="module-progress-bar"
+                        class="h-full rounded-full bg-brand-500"
+                        style="width: 40%">
+                    </div>
+                </div>
+            </section>
+
+            <!--
+                AREA PEMBELAJARAN
+                Menggunakan CSS Grid untuk membagi tampilan menjadi:
+                1. Kolom kiri: daftar materi pembelajaran.
+                2. Kolom kanan: konten materi yang dipilih.
+                Pada layar besar, kolom kiri memiliki lebar 280px,
+                sedangkan kolom kanan menggunakan ruang yang tersisa.
+            -->
+            <div class="grid items-start gap-6 lg:grid-cols-[280px_minmax(0,1fr)]">
+
+                <!--
+                    PANEL DAFTAR MATERI
+                    Menyediakan tempat untuk daftar materi atau lesson.
+                    Isi daftar dapat dibuat secara dinamis oleh JavaScript.
+                -->
+                <section class="card">
+
+                    <!-- Judul panel daftar materi -->
+                    <h2 class="mb-4 text-lg">
+                        Daftar Materi
+                    </h2>
+
+                    <!--
+                        NAVIGASI MATERI
+                        Elemen dengan ID lesson-list menjadi wadah daftar materi.
+                        Konten dapat ditambahkan oleh learning-material.js.
+                    -->
+                    <nav id="lesson-list" aria-label="Daftar materi">
+
+                        <!-- Daftar materi ditambahkan melalui JavaScript -->
+                    </nav>
+                </section>
+
+                <!--
+                    PANEL KONTEN PEMBELAJARAN
+                    Menampilkan isi materi yang sedang dipilih pengguna.
+                    Konten dapat berupa teks, penjelasan, atau elemen belajar lain.
+                -->
+                <section class="card">
+
+                    <!--
+                        KONTEN MATERI AKTIF
+                        Elemen ini menjadi wadah konten pembelajaran.
+                        learning-material.js dapat mengisi atau memperbarui
+                        konten berdasarkan materi yang dipilih.
+                    -->
+                    <div id="lesson-content">
+
+                        <!-- Konten materi aktif ditambahkan melalui JavaScript -->
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!--
+        JAVASCRIPT APLIKASI
+        main.js: fungsi umum aplikasi, termasuk navigasi jika diimplementasikan.
+        learning-material.js: fungsi khusus halaman materi, seperti
+        menampilkan daftar materi dan memperbarui progres modul.
+        Atribut defer membuat skrip dijalankan setelah HTML selesai diparsing.
+    -->
+    <script src="../js/main.js" defer></script>
+    <script src="../js/learning-material.js" defer></script>
+
+</body>
+</html>

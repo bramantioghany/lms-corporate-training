@@ -1,0 +1,476 @@
+<!--
+    Halaman 2: Dashboard untuk student
+    Halaman utama untuk menampilkan informasi profil,
+    ringkasan pembelajaran, daftar tugas, dan progres belajar siswa.
+-->
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Menentukan encoding karakter agar teks ditampilkan dengan benar -->
+    <meta charset="UTF-8">
+
+    <!-- Mengatur viewport agar halaman responsif pada berbagai ukuran layar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Menentukan judul halaman yang ditampilkan pada tab browser -->
+    <title>Dashboard | SkillHub</title>
+
+    <!-- Memuat CSS hasil kompilasi Tailwind CSS -->
+    <link rel="stylesheet" href="../css/output.css">
+
+    <!-- Memuat stylesheet khusus untuk gaya tambahan aplikasi -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!--
+        KONTAINER UTAMA
+        Membungkus sidebar dan konten dashboard.
+        min-h-screen membuat tinggi minimum memenuhi layar,
+        sedangkan md:flex mengatur tata letak horizontal pada layar medium ke atas.
+    -->
+    <div class="min-h-screen md:flex">
+
+        <!--
+            SIDEBAR NAVIGASI
+            Menampilkan logo aplikasi, menu navigasi, dan tautan keluar.
+            Sidebar disembunyikan pada layar kecil dan ditampilkan pada layar desktop.
+        -->
+        <aside id="sidebar"
+            class="hidden w-64 shrink-0 bg-brand-900 p-6 text-white md:block">
+
+            <!-- Logo atau nama aplikasi yang mengarah ke halaman utama -->
+            <a href="../index.html" class="text-2xl font-extrabold">
+                SkillHub
+            </a>
+
+            <!-- Menu navigasi untuk berpindah halaman atau bagian dashboard -->
+            <nav aria-label="Navigasi dashboard" class="mt-10 space-y-2">
+
+                <!-- Menu Dashboard yang sedang aktif -->
+                <a href="dashboard.html"
+                    class="block rounded-lg bg-white/15 px-4 py-3">
+                    Dashboard
+                </a>
+
+                <!-- Menu untuk membuka halaman materi pembelajaran -->
+                <a href="learning-material.html"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    My Courses
+                </a>
+
+                <!-- Menu untuk menuju bagian daftar tugas -->
+                <a href="#assignments"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Assignments
+                </a>
+
+                <!-- Menu untuk menuju bagian progres pembelajaran -->
+                <a href="#progress"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Progress
+                </a>
+
+                <!-- Menu untuk menuju bagian profil pengguna -->
+                <a href="#profile"
+                    class="block rounded-lg px-4 py-3 hover:bg-white/10">
+                    Profile
+                </a>
+            </nav>
+
+            <!--
+                TAUTAN LOG OUT
+                Mengarahkan pengguna ke halaman utama aplikasi.
+                Tautan ini belum menunjukkan proses logout autentikasi.
+            -->
+            <a href="../index.html" class="mt-12 block text-sm text-slate-300">
+                Log Out
+            </a>
+        </aside>
+
+        <!--
+            KONTEN UTAMA DASHBOARD
+            Menampung header, profil, ringkasan pembelajaran,
+            daftar tugas, dan progres pembelajaran.
+        -->
+        <main class="min-w-0 flex-1 p-5 md:p-8">
+
+            <!--
+                HEADER DASHBOARD
+                Menampilkan nama portal dan sapaan kepada pengguna.
+                Tombol Menu disediakan untuk navigasi pada layar kecil.
+            -->
+            <header class="mb-8 flex items-center justify-between gap-4">
+
+                <!-- Informasi judul dan sapaan dashboard -->
+                <div>
+                    <!-- Keterangan jenis portal pembelajaran -->
+                    <p class="text-sm text-slate-500">
+                        Employee Learning Portal
+                    </p>
+
+                    <!-- Sapaan kepada pengguna yang masuk ke dashboard -->
+                    <h1 class="mt-1 text-3xl">
+                        Good Morning, Andi!
+                    </h1>
+                </div>
+
+                <!--
+                    TOMBOL MENU RESPONSIF
+                    Ditampilkan pada layar kecil untuk mengontrol sidebar.
+                    aria-controls menunjukkan elemen yang dikendalikan,
+                    sedangkan aria-expanded menunjukkan status ekspansi menu.
+                -->
+                <button id="menu-toggle"
+                    class="rounded-lg border px-3 py-2 md:hidden"
+                    aria-controls="sidebar"
+                    aria-expanded="false">
+                    Menu
+                </button>
+            </header>
+
+            <!--
+                BAGIAN PROFIL, RINGKASAN, TUGAS, DAN PROGRES
+                Komentar ini menjelaskan kelompok konten dashboard berikutnya.
+            -->
+
+            <!--
+                PROFIL PENGGUNA
+                Menampilkan foto, nama, departemen, dan ID karyawan.
+                ID profile digunakan sebagai target navigasi dari sidebar.
+            -->
+            <section id="profile" class="card mb-6">
+
+                <!-- Mengatur foto dan informasi profil dalam satu baris fleksibel -->
+                <div class="flex flex-wrap items-center gap-4">
+
+                    <!-- Foto profil pengguna dengan teks alternatif untuk aksesibilitas -->
+                    <img
+                        src="../assets/images/avatar-andi.jpg"
+                        alt="Foto profil Andi Pratama"
+                        class="h-16 w-16 rounded-full bg-slate-200 object-cover">
+
+                    <!-- Informasi identitas pengguna -->
+                    <div>
+                        <!-- Nama lengkap pengguna -->
+                        <h2 class="text-xl">Andi Pratama</h2>
+
+                        <!-- Departemen tempat pengguna bekerja -->
+                        <p class="text-sm text-slate-500">
+                            Marketing Department
+                        </p>
+
+                        <!-- Nomor identitas karyawan -->
+                        <p class="mt-1 text-sm text-slate-500">
+                            Employee ID: EMP00123
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!--
+                RINGKASAN PEMBELAJARAN
+                Menampilkan empat kartu statistik pembelajaran.
+                Grid menyesuaikan jumlah kolom berdasarkan ukuran layar.
+            -->
+            <section
+                aria-label="Ringkasan pembelajaran"
+                class="mb-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+                <!-- Kartu jumlah kursus yang sedang berlangsung -->
+                <article class="card">
+                    <p class="text-sm text-slate-500">
+                        Courses Ongoing
+                    </p>
+
+                    <!-- Nilai jumlah kursus aktif -->
+                    <p class="mt-3 text-3xl font-bold">4</p>
+                </article>
+
+                <!-- Kartu jumlah kursus yang telah diselesaikan -->
+                <article class="card">
+                    <p class="text-sm text-slate-500">
+                        Completed
+                    </p>
+
+                    <!-- Nilai kursus selesai dengan penekanan warna hijau -->
+                    <p class="mt-3 text-3xl font-bold text-emerald-600">
+                        2
+                    </p>
+                </article>
+
+                <!-- Kartu total durasi pembelajaran -->
+                <article class="card">
+                    <p class="text-sm text-slate-500">
+                        Total Learning Hours
+                    </p>
+
+                    <!-- Total jam belajar yang telah dicatat -->
+                    <p class="mt-3 text-3xl font-bold">
+                        12.5 jam
+                    </p>
+                </article>
+
+                <!-- Kartu jumlah tugas yang masih tertunda -->
+                <article class="card">
+                    <p class="text-sm text-slate-500">
+                        Pending Assignments
+                    </p>
+
+                    <!-- Nilai tugas tertunda dengan penekanan warna kuning -->
+                    <p class="mt-3 text-3xl font-bold text-amber-600">
+                        2
+                    </p>
+                </article>
+            </section>
+
+            <!--
+                BAGIAN DAFTAR TUGAS (ASSIGNMENTS)
+                Menampilkan tugas pembelajaran beserta kursus,
+                tenggat waktu, status pengerjaan, dan tautan detail.
+            -->
+            <section id="assignments" class="card mb-8">
+
+                <!-- Judul bagian dan jumlah tugas yang ditampilkan -->
+                <div class="mb-5 flex items-center justify-between gap-3">
+
+                    <!-- Judul daftar tugas pengguna -->
+                    <h2 class="text-xl">My Assignments</h2>
+
+                    <!-- Informasi jumlah baris tugas pada tabel -->
+                    <span class="text-sm text-slate-500">3 tugas</span>
+                </div>
+
+                <!--
+                    PEMBUNGKUS TABEL
+                    overflow-x-auto memungkinkan tabel digulir horizontal
+                    ketika lebarnya melebihi ruang yang tersedia.
+                -->
+                <div class="overflow-x-auto">
+
+                    <!--
+                        TABEL ASSIGNMENT
+                        min-w-[650px] mempertahankan lebar minimum tabel.
+                        text-left mengatur teks agar rata kiri.
+                    -->
+                    <table class="w-full min-w-[650px] text-left text-sm">
+
+                        <!-- Kepala tabel berisi nama setiap kolom -->
+                        <thead class="bg-slate-50 text-slate-500">
+                            <tr>
+                                <th class="p-3">Assignment</th>
+                                <th class="p-3">Course</th>
+                                <th class="p-3">Due Date</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Action</th>
+                            </tr>
+                        </thead>
+
+                        <!--
+                            ISI TABEL
+                            Setiap elemen tr mewakili satu tugas.
+                            divide-y menambahkan garis pemisah antarbaris.
+                        -->
+                        <tbody class="divide-y divide-slate-100">
+
+                            <!-- Tugas pertama: sedang dalam proses pengerjaan -->
+                            <tr>
+                                <!-- Nama tugas -->
+                                <td class="p-3 font-medium">
+                                    Marketing Strategy Analysis
+                                </td>
+
+                                <!-- Kursus yang berkaitan dengan tugas -->
+                                <td class="p-3">Digital Marketing</td>
+
+                                <!-- Batas waktu pengumpulan tugas -->
+                                <td class="p-3">25 Oct 2026</td>
+
+                                <!-- Status tugas menggunakan label berwarna kuning -->
+                                <td class="p-3">
+                                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs text-amber-800">
+                                        In Progress
+                                    </span>
+                                </td>
+
+                                <!-- Tautan untuk melihat detail materi atau tugas -->
+                                <td class="p-3">
+                                    <a href="learning-material.html"
+                                        class="font-semibold text-brand-600 hover:underline">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- Tugas kedua: belum mulai dikerjakan -->
+                            <tr>
+                                <!-- Nama tugas -->
+                                <td class="p-3 font-medium">
+                                    Case Study Presentation
+                                </td>
+
+                                <!-- Kursus yang berkaitan dengan tugas -->
+                                <td class="p-3">Business Communication</td>
+
+                                <!-- Batas waktu pengumpulan tugas -->
+                                <td class="p-3">28 Oct 2026</td>
+
+                                <!-- Status tugas menggunakan label berwarna merah -->
+                                <td class="p-3">
+                                    <span class="rounded-full bg-red-100 px-3 py-1 text-xs text-red-700">
+                                        Not Started
+                                    </span>
+                                </td>
+
+                                <!-- Tautan menuju halaman materi pembelajaran -->
+                                <td class="p-3">
+                                    <a href="learning-material.html"
+                                        class="font-semibold text-brand-600 hover:underline">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- Tugas ketiga: belum mulai dikerjakan -->
+                            <tr>
+                                <!-- Nama tugas -->
+                                <td class="p-3 font-medium">
+                                    Final Project
+                                </td>
+
+                                <!-- Kursus yang berkaitan dengan tugas -->
+                                <td class="p-3">Data Analysis</td>
+
+                                <!-- Batas waktu pengumpulan tugas -->
+                                <td class="p-3">5 Nov 2026</td>
+
+                                <!-- Status tugas menggunakan label berwarna merah -->
+                                <td class="p-3">
+                                    <span class="rounded-full bg-red-100 px-3 py-1 text-xs text-red-700">
+                                        Not Started
+                                    </span>
+                                </td>
+
+                                <!-- Tautan menuju halaman materi pembelajaran -->
+                                <td class="p-3">
+                                    <a href="learning-material.html"
+                                        class="font-semibold text-brand-600 hover:underline">
+                                        Detail
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!--
+                BAGIAN LEARNING PROGRESS
+                Menampilkan persentase penyelesaian modul untuk setiap kursus.
+                Setiap kursus memiliki judul, persentase, progress bar,
+                dan keterangan jumlah modul yang telah selesai.
+            -->
+            <section id="progress" class="card">
+
+                <!-- Judul bagian perkembangan pembelajaran -->
+                <h2 class="mb-6 text-xl">Learning Progress</h2>
+
+                <!-- Kontainer daftar progres seluruh kursus -->
+                <div class="space-y-6">
+
+                    <!--
+                        PROGRES KURSUS PERTAMA
+                        Digital Marketing Basics memiliki progres 75%.
+                        Tiga dari empat modul telah diselesaikan.
+                    -->
+                    <article>
+
+                        <!-- Nama kursus dan persentase progres -->
+                        <div class="mb-2 flex justify-between gap-3 text-sm">
+                            <h3>Digital Marketing Basics</h3>
+                            <span class="font-semibold">75%</span>
+                        </div>
+
+                        <!--
+                            PROGRESS BAR 75%
+                            Bagian luar merupakan latar indikator.
+                            Bagian dalam menggunakan w-3/4 untuk menunjukkan
+                            lebar indikator sebesar 75% dari kontainer.
+                        -->
+                        <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                            <div class="h-full w-3/4 rounded-full bg-brand-500"></div>
+                        </div>
+
+                        <!-- Jumlah modul yang telah diselesaikan -->
+                        <p class="mt-2 text-xs text-slate-500">
+                            3 dari 4 modul selesai
+                        </p>
+                    </article>
+
+                    <!--
+                        PROGRES KURSUS KEDUA
+                        Business Communication memiliki progres 50%.
+                        Dua dari empat modul telah diselesaikan.
+                    -->
+                    <article>
+
+                        <!-- Nama kursus dan persentase progres -->
+                        <div class="mb-2 flex justify-between gap-3 text-sm">
+                            <h3>Business Communication</h3>
+                            <span class="font-semibold">50%</span>
+                        </div>
+
+                        <!-- Progress bar dengan lebar 50% -->
+                        <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                            <div class="h-full w-1/2 rounded-full bg-emerald-500"></div>
+                        </div>
+
+                        <!-- Jumlah modul yang telah diselesaikan -->
+                        <p class="mt-2 text-xs text-slate-500">
+                            2 dari 4 modul selesai
+                        </p>
+                    </article>
+
+                    <!--
+                        PROGRES KURSUS KETIGA
+                        Data Analysis for Business telah mencapai progres 100%.
+                        Seluruh lima modul telah diselesaikan.
+                    -->
+                    <article>
+
+                        <!-- Nama kursus dan persentase progres -->
+                        <div class="mb-2 flex justify-between gap-3 text-sm">
+                            <h3>Data Analysis for Business</h3>
+                            <span class="font-semibold">100%</span>
+                        </div>
+
+                        <!-- Progress bar dengan lebar penuh atau 100% -->
+                        <div class="h-3 overflow-hidden rounded-full bg-slate-100">
+                            <div class="h-full w-full rounded-full bg-emerald-500"></div>
+                        </div>
+
+                        <!-- Jumlah modul yang telah diselesaikan -->
+                        <p class="mt-2 text-xs text-slate-500">
+                            5 dari 5 modul selesai
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!--
+        JAVASCRIPT APLIKASI
+        main.js memuat fungsi umum aplikasi.
+        dashboard.js memuat fungsi khusus halaman dashboard,
+        misalnya pengaturan tombol Menu dan sidebar jika telah diimplementasikan.
+        Atribut defer memastikan skrip dijalankan setelah HTML selesai diparsing.
+    -->
+    <script src="../js/main.js" defer></script>
+    <script src="../js/dashboard.js" defer></script>
+
+</body>
+</html>

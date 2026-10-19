@@ -1,0 +1,291 @@
+<!--
+    Halaman 1: Landing Page
+    Halaman utama untuk menampilkan informasi tentang platform SkillHub,
+    kursus yang tersedia, dan fitur-fitur yang ditawarkan.
+-->
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SkillHub corporate training platform">
+    <title>SkillHub | Corporate Training</title>
+
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Navbar Section Start -->
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <nav aria-label="Navigasi utama" class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-extrabold text-brand-600">
+                SkillHub
+            </a>
+
+            <!-- Navbar desktop -->
+            <div class="hidden items-center gap-6 md:flex">
+                <a href="#hero" class="text-sm hover:text-brand-600">Home</a>
+                <a href="#courses" class="text-sm hover:text-brand-600">Courses</a>
+                <a href="#about" class="text-sm hover:text-brand-600">About</a>
+                <a href="#contact" class="text-sm hover:text-brand-600">Contact</a>
+            </div>
+
+            <!-- Tombol dan hamburger -->
+            <div class="flex items-center gap-3">
+                <a href="pages/dashboard.html" class="btn-primary">
+                    Sign In
+                </a>
+
+                <button id="mobile-menu-button" type="button"
+                    class="rounded-lg border border-slate-200 p-2 text-brand-900 hover:bg-slate-100 md:hidden"
+                    aria-label="Buka menu navigasi" aria-controls="mobile-menu" aria-expanded="false">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menu khusus mobile -->
+        <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white md:hidden">
+            <nav aria-label="Navigasi mobile" class="mx-auto flex max-w-7xl flex-col gap-1 px-5 py-3">
+                <a href="#hero" class="rounded-lg px-3 py-3 hover:bg-blue-50">
+                    Home
+                </a>
+                <a href="#courses" class="rounded-lg px-3 py-3 hover:bg-blue-50">
+                    Courses
+                </a>
+                <a href="#about" class="rounded-lg px-3 py-3 hover:bg-blue-50">
+                    About
+                </a>
+                <a href="#contact" class="rounded-lg px-3 py-3 hover:bg-blue-50">
+                    Contact
+                </a>
+            </nav>
+        </div>
+    </header>
+    <!-- Navbar Section End -->
+
+    <!-- Hero Section Start -->
+    <main>
+        <section id="hero" class="bg-gradient-to-br from-blue-50 to-white">
+            <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:grid-cols-2 md:py-24">
+
+                <div>
+                    <p class="mb-4 text-sm font-bold uppercase tracking-widest text-brand-600">
+                        Corporate Training Platform
+                    </p>
+
+                    <h1 class="text-4xl leading-tight md:text-5xl">
+                        Upgrade Your Skills, Build a Stronger Future
+                    </h1>
+
+                    <p class="mt-5 max-w-lg leading-7 text-slate-600">
+                        Tingkatkan kompetensi profesional melalui program
+                        pelatihan yang dirancang untuk kebutuhan karyawan.
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="pages/dashboard.html" class="btn-primary">
+                            Mulai Sekarang
+                        </a>
+                        <a href="#courses"
+                            class="rounded-lg border border-slate-300 px-5 py-3 font-semibold hover:bg-white">
+                            Lihat Kursus
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Memasukkan gambar ke dalam Hero Section -->
+                <div class="p-6 md:p-10">
+                    <img src="assets/images/hero-learning.png" alt="Karyawan mengikuti pelatihan melalui laptop"
+                        class="mx-auto max-h-80 w-3/4 object-cover">
+                </div>
+                <!-- Sumber gambar: www.magnific.com -->
+            </div>
+        </section>
+    </main>
+    <!-- Hero Section End -->
+
+    <!-- Courses Section Start -->
+    <main>
+        <section id="courses" class="mx-auto max-w-7xl px-5 py-16">
+            <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+                <div>
+                    <p class="font-semibold text-brand-600">Your Learning Path</p>
+                    <h2 class="mt-2 text-3xl">Required Courses</h2>
+                    <p class="mt-2 text-slate-600">
+                        Kursus yang perlu diselesaikan oleh seluruh karyawan.
+                    </p>
+                </div>
+                <a href="pages/dashboard.html" class="font-semibold text-brand-600 hover:underline">
+                    Lihat Semua →
+                </a>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <article class="card overflow-hidden !p-0">
+                    <div class="flex h-36 items-center justify-center bg-blue-100 text-5xl">
+                        💬
+                    </div>
+                    <div class="p-5">
+                        <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                            Mandatory
+                        </span>
+                        <h3 class="mt-4 text-xl">Effective Communication</h3>
+                        <p class="mt-2 text-sm text-slate-600">
+                            Meningkatkan komunikasi dan kolaborasi di tempat kerja.
+                        </p>
+                        <p class="mt-4 text-sm text-slate-500">⏱ 2 jam 30 menit</p>
+                        <a href="pages/dashboard.html" class="mt-5 inline-block font-semibold text-brand-600">
+                            Mulai Belajar →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card overflow-hidden !p-0">
+                    <div class="flex h-36 items-center justify-center bg-emerald-100 text-5xl">
+                        ⏰
+                    </div>
+                    <div class="p-5">
+                        <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                            Mandatory
+                        </span>
+                        <h3 class="mt-4 text-xl">Time Management</h3>
+                        <p class="mt-2 text-sm text-slate-600">
+                            Mengelola prioritas dan meningkatkan produktivitas.
+                        </p>
+                        <p class="mt-4 text-sm text-slate-500">⏱ 1 jam 45 menit</p>
+                        <a href="pages/dashboard.html" class="mt-5 inline-block font-semibold text-brand-600">
+                            Mulai Belajar →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card overflow-hidden !p-0">
+                    <div class="flex h-36 items-center justify-center bg-amber-100 text-5xl">
+                        🦺
+                    </div>
+                    <div class="p-5">
+                        <span class="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+                            Mandatory
+                        </span>
+                        <h3 class="mt-4 text-xl">Workplace Safety</h3>
+                        <p class="mt-2 text-sm text-slate-600">
+                            Memahami prosedur keselamatan di lingkungan kerja.
+                        </p>
+                        <p class="mt-4 text-sm text-slate-500">⏱ 1 jam 30 menit</p>
+                        <a href="pages/dashboard.html" class="mt-5 inline-block font-semibold text-brand-600">
+                            Mulai Belajar →
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- Courses Section End -->
+
+    <!-- About Section Start -->
+    <section id="about" class="bg-white py-16 md:py-20">
+        <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2">
+
+            <!-- Informasi tentang SkillHub -->
+            <div>
+                <p class="font-semibold uppercase tracking-widest text-brand-600">
+                    About SkillHub
+                </p>
+
+                <h2 class="mt-3 text-3xl md:text-4xl">
+                    Learning Today, Leading Tomorrow
+                </h2>
+
+                <p class="mt-5 leading-7 text-slate-600">
+                    SkillHub adalah platform corporate training yang membantu
+                    karyawan mengembangkan keterampilan profesional melalui
+                    materi pembelajaran, tugas, dan program pelatihan terstruktur.
+                </p>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                    Dengan satu platform, karyawan dapat mengakses kursus wajib,
+                    memantau progres belajar, dan menyelesaikan pelatihan sesuai
+                    kebutuhan perusahaan.
+                </p>
+
+                <a href="pages/dashboard.html" class="btn-primary mt-4">
+                    Explore Learning
+                </a>
+            </div>
+
+            <!-- Tiga manfaat utama -->
+            <div class="grid gap-4 sm:grid-cols-2">
+                <article class="card">
+                    <div class="text-3xl" aria-hidden="true">📚</div>
+                    <h3 class="mt-4 text-lg">Pembelajaran Terstruktur</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Materi pelatihan tersusun berdasarkan kursus dan modul.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <div class="text-3xl" aria-hidden="true">📈</div>
+                    <h3 class="mt-4 text-lg">Pantau Progressmu</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Pantau penyelesaian materi dan tugas pembelajaran.
+                    </p>
+                </article>
+
+                <article class="card sm:col-span-2">
+                    <div class="text-3xl" aria-hidden="true">🎯</div>
+                    <h3 class="mt-4 text-lg">Professional Development</h3>
+                    <p class="mt-2 text-sm leading-6 text-slate-600">
+                        Bangun kompetensi yang mendukung pertumbuhan karier
+                        dan kebutuhan perusahaan.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Footer Section Start -->
+    <footer id="contact" class="bg-brand-900 text-white">
+        <div class="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-3">
+            <div>
+                <a href="index.html" class="text-2xl font-extrabold">SkillHub</a>
+                <p class="mt-3 max-w-xs text-sm leading-6 text-slate-300">
+                    Platform untuk mengembangkan kompetensi dan potensi karyawan.
+                </p>
+            </div>
+
+            <div>
+                <h2 class="font-bold text-white">Quick Links</h2>
+                <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                    <li><a href="#hero" class="hover:text-white">Home</a></li>
+                    <li><a href="#courses" class="hover:text-white">Courses</a></li>
+                    <li><a href="#about" class="hover:text-white">About</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h2 class="font-bold text-white">Support</h2>
+                <ul class="mt-3 space-y-2 text-sm text-slate-300">
+                    <li><a href="#contact" class="hover:text-white">Help Center</a></li>
+                    <li><a href="#contact" class="hover:text-white">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10 px-5 py-5 text-center text-sm text-slate-300">
+            © 2026 SkillHub. All rights reserved.
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
